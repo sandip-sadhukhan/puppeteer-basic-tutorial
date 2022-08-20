@@ -5,7 +5,7 @@ describe("My First Puppeteer Test", () => {
         // Initialize the browser
 		const browser = await puppeteer.launch({
 			headless: false, // will open browser physically
-			slowMo: 100, // will add 10ms before executing program
+			slowMo: 10, // will add 10ms before executing program
 			devtools: false, // devtools: true will open devtools by default
 		})
 
@@ -13,15 +13,12 @@ describe("My First Puppeteer Test", () => {
 		const page = await browser.newPage()
 
         // goto this url
-		await page.goto("http://example.com/")
-        await page.waitForSelector('h1')
-        await page.goto('https://dev.to')
-        await page.waitForSelector('#index-container')
-        await page.goBack()
-        await page.waitForSelector('h1')
-        await page.goForward()
-        await page.waitForSelector('#index-container')
-        await page.reload()
+		await page.goto("https://devexpress.github.io/testcafe/example/")
+
+        // type in input with 200ms delay keystock
+        await page.type('#developer-name', 'Sandip Sadhukhan', {delay: 200})
+        await page.waitForTimeout(3000)
+
 
         // close the browser
 		await browser.close()
