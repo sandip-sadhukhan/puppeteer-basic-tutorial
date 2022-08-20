@@ -20,6 +20,7 @@ describe("My First Puppeteer Test", () => {
 		page.setDefaultNavigationTimeout(20000)
 
 		await page.goto("https://example.com")
+        await page.waitForXPath('//h1')
 
 		const title = await page.title()
 		const url = await page.url()
