@@ -5,7 +5,7 @@ describe("My First Puppeteer Test", () => {
         // Initialize the browser
 		const browser = await puppeteer.launch({
 			headless: false, // will open browser physically
-			slowMo: 10, // will add 10ms before executing program
+			slowMo: 100, // will add 10ms before executing program
 			devtools: false, // devtools: true will open devtools by default
 		})
 
@@ -14,18 +14,14 @@ describe("My First Puppeteer Test", () => {
 
         // goto this url
 		await page.goto("http://example.com/")
-
-        // wait for 3s
-        await page.waitForTimeout(3000)
-
-        // wait for an element
-		await page.waitForSelector("h1")
-
-        // reload the page
-        await page.reload()
-
-        await page.waitForTimeout(3000)
         await page.waitForSelector('h1')
+        await page.goto('https://dev.to')
+        await page.waitForSelector('#index-container')
+        await page.goBack()
+        await page.waitForSelector('h1')
+        await page.goForward()
+        await page.waitForSelector('#index-container')
+        await page.reload()
 
         // close the browser
 		await browser.close()
