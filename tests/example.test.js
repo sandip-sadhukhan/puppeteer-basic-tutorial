@@ -15,10 +15,13 @@ describe("My First Puppeteer Test", () => {
         // goto this url
 		await page.goto("https://devexpress.github.io/testcafe/example/")
 
-        // type in input with 200ms delay keystock
-        await page.type('#developer-name', 'Sandip Sadhukhan', {delay: 200})
-        await page.waitForTimeout(3000)
+        // type in input
+        await page.type('#developer-name', 'Sandip Sadhukhan')
+        await page.waitForTimeout(1000)
 
+        // click checkbox(click count by default is 1)
+        await page.click('#tried-test-cafe', {clickCount: 1})
+        await page.waitForTimeout(1000)
 
         // close the browser
 		await browser.close()
