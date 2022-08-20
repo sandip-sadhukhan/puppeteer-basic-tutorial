@@ -1,29 +1,28 @@
 const puppeteer = require("puppeteer")
+const except = require('chai').expect
 
 describe("My First Puppeteer Test", () => {
 	it("should launch the browser", async function () {
 		// Initialize the browser
 		const browser = await puppeteer.launch({
-			headless: false, // will open browser physically
+			headless: true, // will open browser physically
 			slowMo: 10, // will add 10ms before executing program
 			devtools: false, // devtools: true will open devtools by default
 			defaultViewport: false,
 		})
 
-		// create a new page on browser
 		const page = await browser.newPage()
-
-		// goto this url
 		await page.goto("https://example.com")
 
-        // get text
+        const title = await page.title()
+        const url = await page.url()
         const text = await page.$eval('h1', element => element.textContent)
-
-        // how many paragraph
         const count = await page.$$eval('p', element => element.length)
 
-        console.log({text, count})
-
+        except(title).to.be.a("string", "Example Domain")
+        except(url).to.include("example.com")
+        except(text).to.be.a("string", "Example Domain")
+        except(count).to.equal(2)
 
 		// close the browser
 		await browser.close()
