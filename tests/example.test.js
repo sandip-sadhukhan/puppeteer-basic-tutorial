@@ -2,10 +2,10 @@ const puppeteer = require("puppeteer")
 
 describe("My First Puppeteer Test", () => {
 	it("should launch the browser", async function () {
-        // Initilize the browser
+        // Initialize the browser
 		const browser = await puppeteer.launch({
 			headless: false, // will open browser physically
-			slowMo: 10, // will add 10ms before excuting program
+			slowMo: 10, // will add 10ms before executing program
 			devtools: false, // devtools: true will open devtools by default
 		})
 

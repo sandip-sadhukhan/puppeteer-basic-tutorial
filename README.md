@@ -1,4 +1,4 @@
-# Basic Tutoral on Pupetters
+# Basic Tutorial on Puppeteers
 
 ### How to run?
 
