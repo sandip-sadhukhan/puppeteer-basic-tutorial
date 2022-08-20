@@ -6,12 +6,19 @@ describe("My First Puppeteer Test", () => {
 		// Initialize the browser
 		const browser = await puppeteer.launch({
 			headless: true, // will open browser physically
-			slowMo: 10, // will add 10ms before executing program
+			slowMo: 0, // will add 0ms before executing program
 			devtools: false, // devtools: true will open devtools by default
 			defaultViewport: false,
 		})
 
 		const page = await browser.newPage()
+
+        // timeout
+        page.setDefaultTimeout(10000)
+
+        // navigation timeout
+        page.setDefaultNavigationTimeout(20000)
+
 		await page.goto("https://example.com")
 
         const title = await page.title()
