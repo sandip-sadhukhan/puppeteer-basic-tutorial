@@ -14,12 +14,16 @@ describe("My First Puppeteer Test", () => {
 		const page = await browser.newPage()
 
 		// goto this url
-		await page.goto("https://yahoo.com")
+		await page.goto("https://example.com")
 
-		// get title and other properties
-		const title = await page.title()
-		const url = await page.url()
-		console.log({ title, url })
+        // get text
+        const text = await page.$eval('h1', element => element.textContent)
+
+        // how many paragraph
+        const count = await page.$$eval('p', element => element.length)
+
+        console.log({text, count})
+
 
 		// close the browser
 		await browser.close()
