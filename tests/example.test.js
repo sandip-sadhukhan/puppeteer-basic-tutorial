@@ -7,6 +7,7 @@ describe("My First Puppeteer Test", () => {
 			headless: false, // will open browser physically
 			slowMo: 10, // will add 10ms before executing program
 			devtools: false, // devtools: true will open devtools by default
+            defaultViewport: false,
 		})
 
         // create a new page on browser
@@ -17,11 +18,13 @@ describe("My First Puppeteer Test", () => {
 
         // type in input
         await page.type('#developer-name', 'Sandip Sadhukhan')
-        await page.waitForTimeout(1000)
 
         // click checkbox(click count by default is 1)
         await page.click('#tried-test-cafe', {clickCount: 1})
-        await page.waitForTimeout(1000)
+
+        // select dropdown
+        await page.select('#preferred-interface', 'JavaScript API')
+        await page.waitForTimeout(3000)
 
         // close the browser
 		await browser.close()
