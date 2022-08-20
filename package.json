@@ -1,0 +1,18 @@
+{
+  "name": "youtube_kaniel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha.js --timeout=30000 ./tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "prettier": "^2.7.1",
+    "puppeteer": "^16.2.0"
+  }
+}
