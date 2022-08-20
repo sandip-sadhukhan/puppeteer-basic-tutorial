@@ -24,7 +24,14 @@ describe("My First Puppeteer Test", () => {
 
         // select dropdown
         await page.select('#preferred-interface', 'JavaScript API')
+
+        // textarea
+        await page.type('#comments', 'Let\'s fill that message with some text')
         await page.waitForTimeout(3000)
+
+        // submit form
+        await page.click('#submit-button')
+        await page.waitForSelector('.result-content')
 
         // close the browser
 		await browser.close()
